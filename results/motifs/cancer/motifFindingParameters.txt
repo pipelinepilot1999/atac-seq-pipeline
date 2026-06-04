@@ -1,0 +1,1 @@
+cmd = results/cancer_open_peaks.bed hg38 results/motifs/cancer/ -size 200 -p 4 -preparsedDir /N/slate/sappagan/atac_project/genome/homer_preparsed

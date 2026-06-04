@@ -1,3 +1,4 @@
+# Large data files (not for GitHub)
 raw_data/
 genome/
 results/aligned/
@@ -5,12 +6,25 @@ results/filtered/
 results/dedup/
 results/trimmed/
 results/bigwigs/
-results/motifs/
 logs/
 .snakemake/
 *.bam
 *.bam.bai
 *.fastq.gz
-*.bw
 *.fa
 *.bt2
+
+# Keep these results
+!results/volcano_plot.pdf
+!results/deseq2_results.csv
+!results/significant_peaks.csv
+!results/GO_cancer_dotplot.pdf
+!results/GO_normal_dotplot.pdf
+!results/GO_cancer_open.csv
+!results/GO_normal_open.csv
+!results/qc/
+!results/peaks/consensus_peaks.bed
+!results/peaks/consensus_counts_header.tsv
+!results/motifs/
+!results/cancer_open_peaks.bed
+!results/normal_open_peaks.bed
