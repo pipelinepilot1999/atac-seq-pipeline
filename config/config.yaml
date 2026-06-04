@@ -1,0 +1,51 @@
+# ============================================================
+# ATAC-seq Pipeline Configuration
+# All parameters live here — never hardcode in Snakefile
+# ============================================================
+
+# Sample information
+samples:
+  MCF7_rep1:
+    R1: "raw_data/MCF7_rep1_1.fastq.gz"
+    R2: "raw_data/MCF7_rep1_2.fastq.gz"
+    condition: "cancer"
+  MCF7_rep2:
+    R1: "raw_data/MCF7_rep2_1.fastq.gz"
+    R2: "raw_data/MCF7_rep2_2.fastq.gz"
+    condition: "cancer"
+  Normal_donor_A:
+    R1: "raw_data/Normal_donor_A_1.fastq.gz"
+    R2: "raw_data/Normal_donor_A_2.fastq.gz"
+    condition: "normal"
+  Normal_donor_B:
+    R1: "raw_data/Normal_donor_B_1.fastq.gz"
+    R2: "raw_data/Normal_donor_B_2.fastq.gz"
+    condition: "normal"
+
+# Reference files
+genome:
+  fasta:      "genome/hg38.fa"
+  index:      "genome/bowtie2_index/hg38"
+  blacklist:  "genome/hg38-blacklist.v2.bed"
+  chromsizes: "genome/hg38.chrom.sizes"
+
+# Trimming
+# Nextera adapter — standard for all ATAC-seq
+# Tn5 transposase uses Nextera adapters during tagmentation
+trimming:
+  adapter: "CTGTCTCTTATACACATCT"
+
+# Alignment
+alignment:
+  mapq: 30                 # minimum mapping quality
+  max_fragment_size: 2000  # maximum insert size
+
+# Peak calling
+peaks:
+  genome_size: "hs"   # hs = homo sapiens effective genome size
+  qvalue: 0.05        # false discovery rate threshold
+
+# SLURM resources
+slurm:
+  partition: "general"
+  account:   "r00086"

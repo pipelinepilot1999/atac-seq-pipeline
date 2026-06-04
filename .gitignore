@@ -1,0 +1,16 @@
+raw_data/
+genome/
+results/aligned/
+results/filtered/
+results/dedup/
+results/trimmed/
+results/bigwigs/
+results/motifs/
+logs/
+.snakemake/
+*.bam
+*.bam.bai
+*.fastq.gz
+*.bw
+*.fa
+*.bt2

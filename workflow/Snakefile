@@ -1,0 +1,23 @@
+# ============================================================
+# ATAC-seq Pipeline — Master Snakefile
+# Project: MCF7 vs Normal breast epithelium
+# ============================================================
+
+configfile: "../config/config.yaml"
+
+SAMPLES = list(config["samples"].keys())
+
+# ── Include modules ──────────────────────────────────────────
+include: "rules/qc.smk"
+include: "rules/alignment.smk"
+include: "rules/peaks.smk"
+include: "rules/coverage.smk"
+
+# ── Final targets ─────────────────────────────────────────────
+rule all:
+    input:
+        expand("results/qc/fastqc/{sample}_1_fastqc.html", sample=SAMPLES),
+        expand("results/qc/fastqc/{sample}_2_fastqc.html", sample=SAMPLES),
+        expand("results/peaks/{sample}_peaks_filtered.bed", sample=SAMPLES),
+        expand("results/bigwigs/{sample}.bw", sample=SAMPLES),
+        "results/qc/qc_summary.tsv"
